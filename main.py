@@ -46,6 +46,7 @@ def process_and_return_gif(video_path, model, batch_size=16, skip_frames=1):
 
     cap.release()
     # save temp file
+    print("Saving to gif and returning")
     with tempfile.NamedTemporaryFile(suffix=".gif", delete=False) as temp_gif:
         imageio.mimsave(temp_gif.name, annotated_frames, format='GIF', fps=10)
         return temp_gif.name
