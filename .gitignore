@@ -1,0 +1,7 @@
+*.html
+*.gif
+*.mp4
+*.pt
+__pycache__/
+.ipynb_checkpoints/
+*.ipynb
