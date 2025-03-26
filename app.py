@@ -4,12 +4,10 @@ from pathlib import Path
 import tempfile
 from main import process_and_return_gif, load_model
 
-def handle_video_upload(video):
-    with tempfile.NamedTemporaryFile(suffix=".mp4", delete=False) as temp_vid:
-       # temp_vid.write(video.read())
-       # temp_vid.flush()
-        gif = process_and_return_gif(temp_vid.name, model=load_model())
-        return gif
+def handle_video_upload(video_path):
+    if not video_path:
+        raise ValueError("No video path provided")
+    gif = process_and_return_gif(video_path, model=load_model())
 
 gr.Interface(
     fn=handle_video_upload,
