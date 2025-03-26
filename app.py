@@ -6,8 +6,8 @@ from main import process_and_return_gif, load_model
 
 def handle_video_upload(video):
     with tempfile.NamedTemporaryFile(suffix=".mp4", delete=False) as temp_vid:
-        temp_vid.write(video.read())
-        temp_vid.flush()
+       # temp_vid.write(video.read())
+       # temp_vid.flush()
         gif = process_and_return_gif(temp_vid.name, model=load_model())
         return gif
 
