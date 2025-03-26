@@ -8,6 +8,7 @@ def handle_video_upload(video_path):
     if not video_path:
         raise ValueError("No video path provided")
     gif = process_and_return_gif(video_path, model=load_model())
+    return gif
 
 gr.Interface(
     fn=handle_video_upload,
