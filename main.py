@@ -28,13 +28,15 @@ def process_and_return_gif(video_path, model, batch_size=16, skip_frames=1):
             batch.append(frame)
             if len(batch) == batch_size:
                 results = model(batch)
-                all_outputs.extend(results.render())
+                for r in results:
+                    all_outputs.append(r.plot())
                 batch = []
         frame_idx += 1
 
     if batch:
         results = model(batch)
-        all_outputs.extend(results.render())
+        for r in results:
+            all_outputs.append(r.plot())
 
     annotated_frames = [cv2.cvtColor(f, cv2.COLOR_BGR2RGB) for f in all_outputs]
 
