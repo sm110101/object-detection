@@ -11,7 +11,8 @@ def handle_video_upload(video_path):
     print("Returning GIF Path:", gif_path)
     return gif_path
 
-article = """
+description = """Upload a video and receive an annotated object detection GIF using YOLOv8n.
+
 ## 🚀 How to Use
 1. Upload your video file (supported formats: mp4, mov, avi)
 2. Wait for processing - this may take a few moments depending on video length
@@ -47,6 +48,5 @@ gr.Interface(
     inputs=gr.Video(label="Upload Video (mp4, mov, avi, etc.)"),
     outputs=gr.Image(type="filepath", label="YOLOv8 GIF"),
     title="YOLO Object Detection to GIF",
-    description="Upload a video and receive an annotated object detection GIF using YOLOv8n.",
-    article=article
+    description=description
 ).launch()
