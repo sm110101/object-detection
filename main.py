@@ -44,12 +44,18 @@ def process_and_return_gif(video_path, model, batch_size=16, skip_frames=1):
             all_outputs.append(r.plot())
 
     annotated_frames = [cv2.cvtColor(f, cv2.COLOR_BGR2RGB) for f in all_outputs]
+    
+    # Get original video FPS
+    original_fps = int(cap.get(cv2.CAP_PROP_FPS))
+    # Adjust FPS based on skip frames
+    output_fps = original_fps // skip_frames
 
     cap.release()
     # save temp file
-    print("Saving to gif and returning")
-    output_path = "output.gif"
-    imageio.mimsave(output_path, annotated_frames, format='GIF', fps=10)
-    print("Saved to", output_path)
-    print("Exists?", os.path.exists(output_path))
-    return output_path
+    with tempfile.NamedTemporaryFile(suffix='.gif', delete=False) as temp_gif:
+        output_path = temp_gif.name
+        print(f"Saving file to path: {output_path}")
+        imageio.mimsave(output_path, annotated_frames, format='GIF', fps=output_fps)
+        print("Saved to", output_path)
+        print("Exists?", os.path.exists(output_path))
+        return output_path

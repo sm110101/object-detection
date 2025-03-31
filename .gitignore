@@ -6,3 +6,7 @@ __pycache__/
 .ipynb_checkpoints/
 *.ipynb
 TODO.md
+test.py
+test_video/
+.DS_Store
+oj_hf/
