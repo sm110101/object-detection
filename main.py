@@ -7,7 +7,8 @@ from tqdm import tqdm
 from io import BytesIO
 import tempfile
 import os
-import datetime
+from datetime import datetime
+from pytz import timezone
 
 def load_model(weights_path="yolov8n.pt"):
     return YOLO(weights_path)
@@ -52,6 +53,11 @@ def process_and_return_gif(video_path, model, batch_size=16, skip_frames=1):
     output_fps = original_fps // skip_frames
 
     cap.release()
+
+    # Handle time logging
+    et_timezone = timezone('US/Eastern')
+    current_datetime_et = datetime.now(et_timezone)
+
     # save temp file
     with tempfile.NamedTemporaryFile(suffix='.gif', delete=False) as temp_gif:
         output_path = temp_gif.name
@@ -59,5 +65,5 @@ def process_and_return_gif(video_path, model, batch_size=16, skip_frames=1):
         imageio.mimsave(output_path, annotated_frames, format='GIF', fps=output_fps)
         print("Saved")
         print("Exists?", os.path.exists(output_path))
-        print(f"\nExecuted: {datetime.datetime.now()}")
+        print(f"\nExecuted: {current_datetime_et}")
         return output_path
