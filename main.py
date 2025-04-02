@@ -7,6 +7,7 @@ from tqdm import tqdm
 from io import BytesIO
 import tempfile
 import os
+import datetime
 
 def load_model(weights_path="yolov8n.pt"):
     return YOLO(weights_path)
@@ -56,6 +57,7 @@ def process_and_return_gif(video_path, model, batch_size=16, skip_frames=1):
         output_path = temp_gif.name
         print(f"Saving file to path: {output_path}")
         imageio.mimsave(output_path, annotated_frames, format='GIF', fps=output_fps)
-        print("Saved to", output_path)
+        print("Saved")
         print("Exists?", os.path.exists(output_path))
+        print(f"\nExecuted: {datetime.datetime.now()}")
         return output_path
