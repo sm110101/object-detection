@@ -67,3 +67,4 @@ def process_and_return_gif(video_path, model, batch_size=16, skip_frames=1):
         print("Exists?", os.path.exists(output_path))
         print(f"\nExecuted: {current_datetime_et}")
         return output_path
+    
