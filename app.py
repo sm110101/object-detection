@@ -48,7 +48,7 @@ with gr.Blocks() as demo:
             """)
         with gr.Column():
             gr.Markdown("""
-            <br>
+
             ## 🛠️ Technical Details
             - Backend: Ultralytics YOLOv8 implementation  
             - Each frame is processed individually for detection  
