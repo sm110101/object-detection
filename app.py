@@ -18,14 +18,16 @@ with gr.Blocks() as demo:
     with gr.Row():
         with gr.Column():
             gr.Markdown("""
-            \n## 🚀 How to Use
+            \n
+            ## 🚀 How to Use
             1. Upload your video file (supported formats: mp4, mov, avi)  
             2. Wait for processing - this may take a few moments depending on video length  
             3. The result will be displayed as an animated GIF showing object detections
             """)
         with gr.Column():
             gr.Markdown("""
-            \n## ✨ Features
+            \n
+            ## ✨ Features
             - Real-time object detection using YOLOv8n model  
             - Automatic conversion of video to annotated GIF format  
             - Support for multiple common video formats  
@@ -35,7 +37,8 @@ with gr.Blocks() as demo:
     with gr.Row():
         with gr.Column():
             gr.Markdown("""
-            \n## ⚠️ Important Notes
+            \n
+            ## ⚠️ Important Notes
             - Processing is limited to 400 frames maximum  
               - Longer videos will be automatically truncated  
               - For best results, trim long videos before uploading  
@@ -48,7 +51,8 @@ with gr.Blocks() as demo:
             """)
         with gr.Column():
             gr.Markdown("""
-            \n## 🛠️ Technical Details
+            \n
+            ## 🛠️ Technical Details
             - Backend: Ultralytics YOLOv8 implementation  
             - Each frame is processed individually for detection  
             - Output: Animated GIF for easy viewing & sharing  
